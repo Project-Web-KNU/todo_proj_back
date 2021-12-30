@@ -1,14 +1,7 @@
-const express = require('express');
-const logger = require('morgan');
-const app = express();
+const app = require('./app.js')
 
-app.use(logger('tiny'));
+PORT = process.env.PORT || 3000;
 
-app.get('/api', (req,res) => {
-    res.send('이건 백앤드 api를 개발하기 위한...LANDING SITE');
-});
-
-
-app.listen(5000, ()=> {
-    console.log("backend is running on 5000");
+app.listen(PORT, ()=> {
+    console.log(`Backend is running on ${PORT}`);
 })
