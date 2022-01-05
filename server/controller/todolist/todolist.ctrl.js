@@ -3,6 +3,10 @@ const Memo = require('../../models/Memo')
 
 exports.post_createTodo = async (req, res) => {
     const { memo, date } = req.body;
+
+    if (!memo) {
+        throw new Error('할 일을 입력해주세요!');
+    }
     const post = await Memo.create({ memo, date });
 
     res.status(201).json({ post })
