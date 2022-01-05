@@ -12,8 +12,13 @@ exports.post_createTodo = async (req, res) => {
     res.status(201).json({ post })
 }
 
-exports.get_findAllTodo = asyncWrapper(async (req, res) => {
+exports.get_findByDateTodo = asyncWrapper(async (req, res) => {
     const { date } = req.query;
     const memos = await Memo.find({ date });
+    res.status(200).json({ memos, count: memos.length })
+});
+
+exports.get_findAllTodo = asyncWrapper(async (req, res) => {
+    const memos = await Memo.find({});
     res.status(200).json({ memos, count: memos.length })
 });
