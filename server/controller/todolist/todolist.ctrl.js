@@ -1,7 +1,15 @@
+const asyncWrapper = require('../../middleware/async');
+const Memo = require('../../models/Memo')
+
 exports.post_createTodo = async (req, res) => {
-    res.send('test');
+    const { memo, date } = req.body;
+    const post = await Memo.create({ memo, date });
+
+    res.status(201).json({ post })
 }
 
-exports.get_findAllTodo = async (req, res) => {
-    res.send('find all Todo')
-}
+exports.get_findAllTodo = asyncWrapper(async (req, res) => {
+    const { date } = req.query;
+    const memos = await Memo.find({ date });
+    res.status(200).json({ memos, count: memos.length })
+});

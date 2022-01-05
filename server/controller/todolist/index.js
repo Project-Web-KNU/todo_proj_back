@@ -1,5 +1,5 @@
-const { Router} = require('express')
-const router  = Router();
+const { Router } = require('express')
+const router = Router();
 const ctrl = require('./todolist.ctrl')
 
 router.post('/create', ctrl.post_createTodo);
