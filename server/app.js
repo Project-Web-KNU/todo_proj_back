@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const async_errors = require('express-async-errors');
 const bodyParser = require('body-parser');
 const { StatusCodes } = require('http-status-codes');
+const cors = require('cors');
 
 class app {
   constructor() {
@@ -48,6 +49,7 @@ class app {
     this.app.use(logger('tiny'));
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(cors())
   }
 
   setStatic() {
