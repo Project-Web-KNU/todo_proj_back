@@ -34,6 +34,7 @@ exports.edit_post = asyncWrapper(async (req, res) => {
 })
 
 exports.delete_post = asyncWrapper(async (req, res) => {
+    // res.send('삭제됩니다 ㅎㅎ');
     console.log(req);
     const { params: { id: id } } = req;
     const memo = await Memo.findByIdAndDelete({ _id: id });
